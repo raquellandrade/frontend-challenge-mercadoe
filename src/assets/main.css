@@ -1,6 +1,15 @@
 @import './base.css';
 @import 'tailwindcss';
 
+@theme {
+  --color-primary: #1052e0;
+  --color-primary-50: #edf3ff;
+  --color-success-500: #1e976c;
+  --color-neutral-500: #566574;
+  --color-neutral-700: #303e49;
+  --font-roboto: 'Roboto', sans-serif;
+}
+
 #app {
   max-width: 1360px;
   margin: 0 auto;
