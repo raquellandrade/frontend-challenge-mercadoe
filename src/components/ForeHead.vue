@@ -2,16 +2,16 @@
   <div class="flex items-start justify-between mb-8">
     <div class="w-[200px] bg-primary text-white p-4 rounded-r-lg mr-6">
       <p class="text-lg/6">Pre-Order</p>
-      <p class="text-2xl/8 font-bold">{{ dataHeader.number }}</p>
-      <p class="text-xs/4">#ME{{ dataHeader.serial }}</p>
+      <p class="text-2xl/8 font-bold">{{ dataHeader?.number }}</p>
+      <p class="text-xs/4">#ME{{ dataHeader?.serial }}</p>
     </div>
     <div class="grow">
-      <p class="text-xl/7 font-semibold text-neutral-700 mb-3">{{ dataHeader.buyer }}</p>
+      <p class="text-xl/7 font-semibold text-neutral-700 mb-3">{{ dataHeader?.buyer }}</p>
       <InformationItem>
         <template #icon>
           <IconUser />
         </template>
-        <template #text> {{ dataHeader.contact?.name }} </template>
+        <template #text> {{ dataHeader?.contact?.name }} </template>
       </InformationItem>
 
       <div class="flex items-center gap-4 text-xs/4 text-neutral-500">
@@ -19,29 +19,29 @@
           <template #icon>
             <IconEnvelope />
           </template>
-          <template #text>{{ dataHeader.contact?.email }}</template>
+          <template #text>{{ dataHeader?.contact?.email }}</template>
         </InformationItem>
 
         <InformationItem>
           <template #icon>
             <IconPhone />
           </template>
-          <template #text>{{ dataHeader.contact?.phone }}</template>
+          <template #text>{{ dataHeader?.contact?.phone }}</template>
         </InformationItem>
 
         <InformationItem>
           <template #icon>
             <IconFax />
           </template>
-          <template #text> {{ dataHeader.contact?.fax }} </template>
+          <template #text> {{ dataHeader?.contact?.fax }} </template>
         </InformationItem>
       </div>
     </div>
     <div class="text-right">
       <p class="text-xl/7 font-semibold text-neutral-700 mb-1">
-        {{ dataHeader.currency }} {{ dataHeader.price }}
+        {{ dataHeader?.currency }} {{ dataHeader?.price }}
       </p>
-      <p class="text-xl/7 font-semibold text-success-500 mb-1">{{ dataHeader.status }}</p>
+      <p class="text-xl/7 font-semibold text-success-500 mb-1">{{ dataHeader?.status }}</p>
       <p class="text-xs/4 text-neutral-500">{{ formattedCreatedAt }}</p>
     </div>
   </div>
@@ -64,7 +64,7 @@ const props = defineProps({
 const formattedCreatedAt = computed(() => {
   if (!props.dataHeader?.createdAt) return ''
 
-  const date = new Date(props.dataHeader.createdAt)
+  const date = new Date(props.dataHeader?.createdAt)
   const year = date.getFullYear()
   const month = String(date.getMonth() + 1).padStart(2, '0')
   const day = String(date.getDate()).padStart(2, '0')
