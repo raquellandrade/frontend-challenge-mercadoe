@@ -7,18 +7,26 @@ export const dataAddresses = ref([])
 
 // Determine the base URL based on environment
 const getBaseUrl = () => {
-  // In development, use the proxy
+  // In development, use the Vite proxy
   if (import.meta.env.DEV) {
     return '/api'
   }
-  // In production, use the actual API URL
-  return 'https://api.mercadoe.space'
+  // In production, use our Vercel proxy function
+  return '/api/proxy'
 }
 
 export async function getApi() {
   try {
     const baseUrl = getBaseUrl()
-    const response = await axios.get(`${baseUrl}/orders/1`)
+
+    // In development, use the direct path
+    if (import.meta.env.DEV) {
+      const response = await axios.get(`${baseUrl}/orders/1`)
+      return response
+    }
+
+    // In production, use the proxy with path as query parameter
+    const response = await axios.get(`${baseUrl}?path=orders/1`)
     return response
   } catch (error) {
     console.error('Erro na requisição da API:', error)
