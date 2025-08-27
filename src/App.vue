@@ -3,11 +3,15 @@ import { ref, onMounted, computed } from 'vue'
 import ForeHead from './components/ForeHead.vue'
 import BaseCard from './components/ui/BaseCard.vue'
 import IconChevron from './components/icons/IconChevron.vue'
-import { getApi } from './data/apiClient'
+import {
+  responseApiHeader,
+  responseApiSupplier,
+  responseApiAddresses,
+  dataHeader,
+  dataSupplier,
+  dataAddresses,
+} from './data/apiClient'
 
-const dataHeader = ref({})
-const dataSupplier = ref({})
-const dataAddresses = ref([])
 const showAddresses = ref(true)
 
 const supplierCardData = computed(() => {
@@ -140,33 +144,6 @@ const addressCardData = computed(() => {
   })
 })
 
-const responseApiHeader = getApi().then((res) => {
-  try {
-    dataHeader.value = res.data.header
-    return
-  } catch (e) {
-    console.log(e, 'Erro request API Header')
-  }
-})
-
-const responseApiSupplier = getApi().then((res) => {
-  try {
-    dataSupplier.value = res.data.supplier
-    return
-  } catch (e) {
-    console.log(e, 'Erro request API Supplier')
-  }
-})
-
-const responseApiAddresses = getApi().then((res) => {
-  try {
-    dataAddresses.value = res.data.addresses
-    return
-  } catch (e) {
-    console.log(e, 'Erro request API Addresses')
-  }
-})
-
 onMounted(async () => {
   await { responseApiHeader, responseApiSupplier, responseApiAddresses }
 })
@@ -194,10 +171,10 @@ onMounted(async () => {
       </div>
       <div
         v-show="showAddresses"
-        class="flex items-center justify-between gap-4 transition-all duration-300"
+        class="flex items-center justify-between gap-4 transition-all duration-300 flex-col lg:flex-row"
       >
         <BaseCard
-          class="flex-1"
+          class="flex-1 w-full"
           :card-data="addressCardData[index]"
           v-for="(address, index) in dataAddresses"
           :key="address.label || index"
