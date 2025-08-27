@@ -5,7 +5,7 @@
       <p class="text-2xl/8 font-bold">{{ dataHeader?.number }}</p>
       <p class="text-xs/4">#ME{{ dataHeader?.serial }}</p>
     </div>
-    <div class="lg:grow w-full lg:w-auto mb-4 lg: mb-0">
+    <div class="lg:grow w-full lg:w-auto mb-4 lg:mb-0">
       <p class="text-xl/7 font-semibold text-neutral-700 mb-3">{{ dataHeader?.buyer }}</p>
       <InformationItem>
         <template #icon>
