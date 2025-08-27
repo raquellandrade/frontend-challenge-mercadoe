@@ -171,10 +171,10 @@ onMounted(async () => {
       </div>
       <div
         v-show="showAddresses"
-        class="flex items-center justify-between gap-4 transition-all duration-300"
+        class="flex items-center justify-between gap-4 transition-all duration-300 flex-col lg:flex-row"
       >
         <BaseCard
-          class="flex-1"
+          class="flex-1 w-full"
           :card-data="addressCardData[index]"
           v-for="(address, index) in dataAddresses"
           :key="address.label || index"

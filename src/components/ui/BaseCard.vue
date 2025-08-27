@@ -17,7 +17,7 @@
     </div>
     <div class="text-xs/4 text-neutral-500">
       <slot name="content">
-        <div v-if="cardData?.content" class="flex">
+        <div v-if="cardData?.content" class="flex flex-col lg:flex-row">
           <div class="flex-1 pr-1">
             <InformationItem v-for="(item, index) in cardData.content.left" :key="index">
               <template #icon>

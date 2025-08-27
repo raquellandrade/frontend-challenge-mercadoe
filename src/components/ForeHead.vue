@@ -1,11 +1,11 @@
 <template>
-  <div class="flex items-start justify-between mb-8">
-    <div class="w-[200px] bg-primary text-white p-4 rounded-r-lg mr-6">
+  <div class="flex items-start justify-between mb-8 flex-col lg:flex-row">
+    <div class="lg:w-[200px] w-full bg-primary text-white p-4 rounded-r-lg lg:mr-6 mb-2 lg:mb-0">
       <p class="text-lg/6">Pre-Order</p>
       <p class="text-2xl/8 font-bold">{{ dataHeader?.number }}</p>
       <p class="text-xs/4">#ME{{ dataHeader?.serial }}</p>
     </div>
-    <div class="grow">
+    <div class="lg:grow w-full lg:w-auto mb-4 lg: mb-0">
       <p class="text-xl/7 font-semibold text-neutral-700 mb-3">{{ dataHeader?.buyer }}</p>
       <InformationItem>
         <template #icon>
@@ -14,7 +14,9 @@
         <template #text> {{ dataHeader?.contact?.name }} </template>
       </InformationItem>
 
-      <div class="flex items-center gap-4 text-xs/4 text-neutral-500">
+      <div
+        class="flex lg:items-center gap-1 lg:gap-4 text-xs/4 text-neutral-500 flex-col lg:flex-row"
+      >
         <InformationItem>
           <template #icon>
             <IconEnvelope />
@@ -37,7 +39,7 @@
         </InformationItem>
       </div>
     </div>
-    <div class="text-right">
+    <div class="lg:text-right w-full lg:w-auto">
       <p class="text-xl/7 font-semibold text-neutral-700 mb-1">
         {{ dataHeader?.currency }} {{ dataHeader?.price }}
       </p>
